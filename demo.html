@@ -1,0 +1,30 @@
+
+//Add Some CDN
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+
+//Insert Jquery Code
+
+<script>
+jQuery(document).ready(function() {
+    jQuery(".mypost .elementor-post a").click(function(e) {
+        var id = jQuery(this).attr('id');
+        let dataUrl = jQuery(this).attr('href');
+        console.log(dataUrl);
+         event.preventDefault();
+        this.blur(); // Manually remove focus from clicked link.
+          jQuery.get(dataUrl , function(html) {
+        jQuery('<div id="ajax-popup" class="modal"></div>').appendTo('body').load(dataUrl+" .our_products").modal({
+           opacity:60,
+           position: ["0%"],
+           overlayClose:true,
+           
+        });
+          });
+        return false;
+    });
+});
+</script>
